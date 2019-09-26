@@ -4,7 +4,7 @@
     <h1>uid getter should display here: {{ uidGetter }}.</h1>
     If you don't see one, check the Javascript console.
     There's probably an error there.
-    <button @click="setUid('uid2')">Click Me</button>
+    <button @click="setUid('uid-'+(id++))">Click Me</button>
   </div>
 </template>
 
@@ -14,9 +14,12 @@ import { userStore } from '@/store'
 export default {
   data () {
     return {
-      uid: userStore.uid || 'no-user',
-      uidGetter: userStore.uidGetter || 'no-getter'
+      id: 0
     }
+  },
+  computed: {
+    uid: () => userStore.uid || 'no-user',
+    uidGetter: () => userStore.uidGetter || 'no-getter'
   },
   methods: {
     setUid: (uid: string) => {
