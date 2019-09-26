@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex, { Store } from 'vuex'
-import { initializeStores, userStore, modules } from '@/store/store-accessor'
+import { initializeStores, modules } from '@/store/store-accessor'
 Vue.use(Vuex)
 
 const initializer = (store: Store<any>) => initializeStores(store)
