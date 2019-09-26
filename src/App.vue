@@ -11,7 +11,7 @@ import { userStore } from '@/store'
 export default {
   data () {
     return {
-      uid: userStore.user ? userStore.user.uid : 'no-user'
+      uid: userStore.uid || 'no-user'
     }
   }
 }
