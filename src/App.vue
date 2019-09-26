@@ -1,31 +1,18 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <h1>A uid should display here: {{ uid }}.</h1>If you don't see one, check the Javascript console.
+    There's probably an error there.
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script lang="ts">
+import { userStore } from '@/store'
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+export default {
+  data () {
+    return {
+      uid: userStore.user ? userStore.user.uid : 'no-user'
+    }
+  }
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>
