@@ -9,6 +9,8 @@
     <button @click="setUid('uid-'+(id++))">Click Me to set uid</button>
     <br>
     <button @click="setVersion('456')">Click Me to set version</button>
+    <br>
+    <button @click="setUidModB('uidViaModB-'+(id++))">Click Me to set uid via modB</button>
   </div>
 </template>
 
@@ -29,6 +31,9 @@ export default {
   methods: {
     setUid: (uid: string) => {
       userStore.setUid(uid)
+    },
+    setUidModB: (uid: string) => {
+      modBStore.setUid(uid)
     },
     setVersion: (version: string) => {
       modBStore.setVersion(version)
