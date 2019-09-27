@@ -1,12 +1,26 @@
-import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
-import { userStore } from '@/store'
+// Here is how to use one module's state or mutations from another:
+// Note: do NOT import @/store here (would cause circular import)
+import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
+import userModule from '@/store/modules/user'
+
 @Module({ name: 'modB' })
 export default class ModBModule extends VuexModule {
-  version = 123
-  versionUid = ''
+  version: string = '123'
+
+  get versionUid () {
+    // this is the key to using another module:
+    // go up to the root, find the module, and cast it to the right type
+    const userStore = this.context.rootState.user as userModule
+    const uid = userStore.uid
+    return this.version + '-' + uid
+  }
   @Mutation
-  setVersion (version: number) {
+  setVersion (version: string) {
     this.version = version
-    this.versionUid = `${version} ${userStore.uid}`
+  }
+  @Action
+  setUid (uid: string) {
+    const userStore = this.context.rootState.user as userModule
+    userStore.setUid(uid)
   }
 }

@@ -1,5 +1,6 @@
 // Vuex store for User data
 
+// Note: do NOT import @/store here (would cause circular import)
 import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
 
 @Module({ name: 'user' })
