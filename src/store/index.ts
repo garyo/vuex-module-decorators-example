@@ -14,10 +14,12 @@ export const plugins = [initializer]
 export * from '@/store/store-accessor' // re-export the modules
 
 // Export the root store. You can add mutations & actions here as well.
+// Note that this is a standard Vuex store, not a vuex-module-decorator one.
+// (Perhaps could be, but I put everything in modules)
 export default new Store({
-  plugins,
-  modules,
-  state: {},
+  plugins, // important!
+  modules, // important!
+  state: { root: 'I am groot' },
   mutations: {},
   actions: {}
 })
